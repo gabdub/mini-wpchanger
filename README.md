@@ -10,6 +10,9 @@ __Installation:__
 
 Just clone the repository somewhere, copy the files of your screen resolution, add some wallpapers to __wallpapers__ folder (adjust the files to your screen resolution) and run __choose_wp__ from cron every minute and at start up.
 
+**Digital-7 font:**
+Get and install __Digital-7-MonoItalic__ font from: http://www.dafont.com/es/digital-7.font
+
 **Set your desktop:**
 
 Set your desktop's method of changing wallpaper in the last line of __stamp_date__. Use __~/.config/variety/scripts/set_wallpaper__ from __variety__ as a reference.
