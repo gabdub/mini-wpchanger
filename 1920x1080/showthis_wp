@@ -1,0 +1,4 @@
+#!/bin/bash
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cp $1 $BASEDIR/back.jpg
+$BASEDIR/stamp_date

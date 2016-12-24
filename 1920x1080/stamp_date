@@ -1,0 +1,16 @@
+#!/bin/bash
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+FI=$BASEDIR/back.jpg
+FO=$BASEDIR/back_date.jpg
+#print date and time
+TH='"'$(date "+%H:%M")'"'
+TM1='"'$(date "+%A")'"'
+TM2='"'$(date "+%d de %B")'"'
+#TM1='"domingo"'
+#TM2='"30 de septiembre"'
+CFH="white"
+CFM="#F6FFAA"
+CB="back"
+CS="rgba(0,0,0,0.5)"
+convert -gravity NorthWest -font Digital-7-MonoItalic -pointsize 120 -fill $CS -draw "rectangle 1490,900 1910,1070" -draw "rectangle 1500,910 1900,1015" -fill $CB -draw "text 1562,917 $TH" -fill $CFH -draw "text 1560,915 $TH" -font Ubuntu-Condensed -pointsize 40 -fill $CB -draw "text 1502,1022 $TM1" -fill $CFM -draw "text 1500,1020 $TM1" -gravity SouthEast -fill $CB -draw "text 17,13 $TM2" -fill $CFM -draw "text 19,15 $TM2" $FI $FO
+gsettings set org.mate.background picture-filename $FO 2> /dev/null
