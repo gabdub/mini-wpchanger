@@ -16,8 +16,11 @@ Get and install __Digital-7-MonoItalic__ font from: http://www.dafont.com/es/dig
 
 **Set your desktop:**
 
-Set your desktop's method of changing wallpaper in the last line of __stamp_date__. Use __~/.config/variety/scripts/set_wallpaper__ from __variety__ as a reference.
-For Ubuntu Mate 16.04 use: __gsettings set org.mate.background ...__
+Set your desktop's method of changing the wallpaper in the last line of __stamp_date__ script.
+
+Use __~/.config/variety/scripts/set_wallpaper__ from __variety__ as a reference.
+
+For Ubuntu Mate 16.04 I use: __gsettings set org.mate.background ...__
 
 **Add to cron**
 
@@ -30,14 +33,16 @@ crontab -e
 ^X       (to exit)
 ```
 
-**Add to start up**
+**Run at start up**
 
-Add a start up file to run:
+Add this to run at start up:
 ```
 /bin/bash /home/.../choose_wp
 ```
 
 **Add caja-actions**
+
+Caja actions packet allows to set Caja context menues.
 
 ```
 sudo apt install caja-actions
@@ -45,7 +50,16 @@ sudo apt install caja-actions
 
 Add the following actions:
 
-* __next wallpaper__ - run: /install-path/next_wp - working folder: /install-path
-* __play wallpaper list__ - run: /install-path/start_playlist - working folder: /install-path
-* __set this wallpaper__ - run: /install-path/showthis_wp - parameters: %F - working folder: /install-path
+* __next wallpaper__ (folder action) - run: /install-path/next_wp - working folder: /install-path
+* __play wallpaper list__ (folder action) - run: /install-path/start_playlist - working folder: /install-path
+* __set this wallpaper__ (file action) - run: /install-path/showthis_wp - parameters: %F - working folder: /install-path
 
+**modes**
+
+Edit __mode__ file or run __start_playlist__ to change the wallpaper change mode.
+
+* __0__ : keep the same wallpaper
+* __1__ : random change the wallpaper every minute
+* __2__ : random change the wallpaper every 5 minutes (since last change)
+* __3__ : random change the wallpaper every 5 minutes (at minute 00, 05, 10, ..., 55)
+* __4__ : play the wallpaper list (change every minute), last line set the new mode (4 to repit the list for ever)
