@@ -1,0 +1,7 @@
+#!/bin/bash
+TH='"'$(date "+%H:%M")'"'
+TM='"'$(date "+%A %d - %B %Y")'"'
+FI="/home/gabriel/Descargas/convert-img/back.jpg"
+FO="/home/gabriel/Descargas/convert-img/back_date.jpg"
+convert -font Digital-7-Italic -gravity SouthEast -pointsize 70 -fill black -draw "text +33,+88 $TH" -fill white -draw "text +35,+90 $TH" -font Ubuntu-Condensed -pointsize 24 -fill black -draw "text +40,+33 $TM" -fill white -draw "text +42,+35 $TM" $FI $FO
+gsettings set org.mate.background picture-filename $FO 2> /dev/null
