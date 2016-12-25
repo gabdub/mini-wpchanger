@@ -2,7 +2,7 @@
 
 This is my mini wallpaper changer.
 
-After using __variety__ wallpaper changer (http://peterlevi.com/variety/) for a couple of years (and downloaded hundreds of wallpapers), I decided to roll my own mini version with only the features I use while keeping the resource usage to a minimum.
+After using __variety__ wallpaper changer (http://peterlevi.com/variety/) for a couple of years (and downloaded hundreds of wallpapers), I decided to roll my own mini version with only the features I use while keeping the resource usage to a bare minimum.
 
 ![my desktop](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/desktop1.jpg "my desktop")
 
@@ -65,3 +65,8 @@ Allowed values:
 * __2__ : random change the wallpaper every 5 minutes (since last change)
 * __3__ : random change the wallpaper every 5 minutes (at minute 00, 05, 10, ..., 55)
 * __4__ : play the wallpaper list (set a new wallpaper from the list every minute). the last line sets a new mode (set to 4 to repit the list forever)
+
+**Netbook version (1024x600)**
+
+I use this version in my old netbook that also runs Ubuntu Mate 16.04.
+The time is stamped over a fixed image without using transparency or any fancy modes.
