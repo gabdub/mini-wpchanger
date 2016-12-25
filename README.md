@@ -64,4 +64,4 @@ Allowed values:
 * __1__ : random change the wallpaper every minute
 * __2__ : random change the wallpaper every 5 minutes (since last change)
 * __3__ : random change the wallpaper every 5 minutes (at minute 00, 05, 10, ..., 55)
-* __4__ : play the wallpaper list (set a new wallpaper from the list every minute). the last line sets a new mode (set to 4 to repit the list for ever)
+* __4__ : play the wallpaper list (set a new wallpaper from the list every minute). the last line sets a new mode (set to 4 to repit the list forever)
