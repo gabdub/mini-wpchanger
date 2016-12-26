@@ -69,4 +69,7 @@ Allowed values:
 **Netbook version (1024x600)**
 
 I use this version in my old netbook that also runs Ubuntu Mate 16.04.
+
 The time is stamped over a fixed image without using transparency or any fancy modes.
+
+Run __stamp_date__ at startup and from cron (instead of _choose_wp_).
