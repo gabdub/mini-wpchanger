@@ -4,5 +4,5 @@ FI=$BASEDIR/back.jpg
 FO=$BASEDIR/back_date.jpg
 TH='"'$(date "+%H:%M")'"'
 TM='"'$(date "+%A %d de %B")'"'
-convert -font Digital-7-Italic -gravity SouthEast -pointsize 70 -fill black -draw "text +33,+88 $TH" -fill white -draw "text +35,+90 $TH" -font Ubuntu-Condensed -pointsize 24 -fill black -draw "text +40,+33 $TM" -fill white -draw "text +42,+35 $TM" $FI $FO
+convert -font Digital-7-Italic -gravity NorthEast -pointsize 70 -fill black -draw "text +33,+70 $TH" -fill white -draw "text +35,+68 $TH" -font Ubuntu-Condensed -pointsize 24 -fill black -draw "text +35,+35 $TM" -fill white -draw "text +37,+33 $TM" $FI $FO
 gsettings set org.mate.background picture-filename $FO 2> /dev/null
