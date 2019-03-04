@@ -4,7 +4,10 @@ This is my mini wallpaper changer.
 
 After using __variety__ wallpaper changer (http://peterlevi.com/variety/) for a couple of years (and downloaded hundreds of wallpapers), I decided to roll my own mini version with only the features I use while keeping the resource usage to a bare minimum.
 
-![my desktop](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/desktop1.jpg "my desktop")
+![my desktop 1](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/desktop1.jpg "my desktop 1")
+
+
+![my desktop 2](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/desktop2.jpg "my desktop 2")
 
 __Installation:__
 

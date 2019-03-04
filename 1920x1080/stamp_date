@@ -2,17 +2,32 @@
 BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 FI=$BASEDIR/back.jpg
 FO=$BASEDIR/back_date.jpg
-#print date and time
 TH='"'$(date "+%H:%M")'"'
 TM1='"'$(date "+%A")'"'
 TM2='"'$(date "+%d de %B")'"'
-#TM1='"domingo"'
-#TM2='"30 de septiembre"'
+CAL="$(cal | sed 's/[\_\x08]//g')"
+CA1="$(echo "$CAL" | sed -n '2p')"
+CA2="$(echo "$CAL" | sed -n '3p')"
+CA3="$(echo "$CAL" | sed -n '4p')"
+CA4="$(echo "$CAL" | sed -n '5p')"
+CA5="$(echo "$CAL" | sed -n '6p')"
+CA6="$(echo "$CAL" | sed -n '7p')"
+CA7="$(echo "$CAL" | sed -n '8p')"
 CFH="white"
 CFM="#F6FFAA"
 CB="back"
 CS="rgba(0,0,0,0.5)"
-#convert -font Digital-7-MonoItalic -gravity SouthEast -pointsize 120 -fill $CS -draw "rectangle 1585,900 1980,1005" -fill $CB -draw "text +33,+108 $TH" -fill $CFH -draw "text +35,+110 $TH" -font Ubuntu-Condensed -pointsize 40 -fill $CB -draw "text +38,+23 $TM" -fill $CFM -draw "text +40,+25 $TM" $FI $FO
-#convert -font Digital-7-MonoItalic -pointsize 120 -fill $CS -draw "rectangle 1490,900 1910,1070" -draw "rectangle 1500,910 1900,1015" -fill $CB -draw "text 1562,1002 $TH" -fill $CFH -draw "text 1560,1000 $TH" -font Ubuntu-Condensed -pointsize 40 -fill $CB -draw "text 1505,1057 $TM" -fill $CFM -draw "text 1503,1055 $TM" $FI $FO
-convert -gravity NorthWest -font Digital-7-MonoItalic -pointsize 120 -fill $CS -draw "rectangle 1490,900 1910,1070" -draw "rectangle 1500,910 1900,1015" -fill $CB -draw "text 1562,917 $TH" -fill $CFH -draw "text 1560,915 $TH" -font Ubuntu-Condensed -pointsize 40 -fill $CB -draw "text 1504,1022 $TM1" -fill $CFM -draw "text 1502,1020 $TM1" -gravity SouthEast -fill $CB -draw "text 17,13 $TM2" -fill $CFM -draw "text 19,15 $TM2" $FI $FO
+#with calendar
+convert -gravity NorthWest -font Ubuntu-Mono -pointsize 16\
+ -fill $CS -draw "rectangle 1280,900 1480,1070" -draw "rectangle 1290,910 1470,1060" -draw "rectangle 1490,900 1910,1070" -draw "rectangle 1500,910 1900,1015"\
+ -fill $CB -draw "text 1302,917 '$CA1'" -draw "text 1302,937 '$CA2'" -draw "text 1302,957 '$CA3'" -draw "text 1302,977 '$CA4'" -draw "text 1302,997 '$CA5'" -draw "text 1302,1017 '$CA6'" -draw "text 1302,1037 '$CA7'"\
+ -fill $CFH -draw "text 1300,915 '$CA1'" -draw "text 1300,935 '$CA2'" -draw "text 1300,955 '$CA3'" -draw "text 1300,975 '$CA4'" -draw "text 1300,995 '$CA5'" -draw "text 1300,1015 '$CA6'" -draw "text 1300,1035 '$CA7'"\
+ -font Digital-7-MonoItalic -pointsize 120\
+ -fill $CB -draw "text 1562,917 $TH" -fill $CFH -draw "text 1560,915 $TH" -font Ubuntu-Condensed -pointsize 40 -fill $CB -draw "text 1504,1022 $TM1" -fill $CFM -draw "text 1502,1020 $TM1" -gravity SouthEast -fill $CB -draw "text 17,13 $TM2" -fill $CFM -draw "text 19,15 $TM2" $FI $FO
+
+#without calendar
+# convert -gravity NorthWest -font Digital-7-MonoItalic -pointsize 120\
+#  -fill $CS -draw "rectangle 1490,900 1910,1070" -draw "rectangle 1500,910 1900,1015"\
+#  -fill $CB -draw "text 1562,917 $TH" -fill $CFH -draw "text 1560,915 $TH" -font Ubuntu-Condensed -pointsize 40 -fill $CB -draw "text 1504,1022 $TM1" -fill $CFM -draw "text 1502,1020 $TM1" -gravity SouthEast -fill $CB -draw "text 17,13 $TM2" -fill $CFM -draw "text 19,15 $TM2" $FI $FO
+
 gsettings set org.mate.background picture-filename $FO 2> /dev/null
