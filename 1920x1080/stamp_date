@@ -29,7 +29,7 @@ CS="rgba(0,0,0,0.5)"
 #with calendar
 convert -gravity NorthWest -font Ubuntu-Mono -pointsize 16\
  -fill $CS -draw "rectangle 1280,900 1480,1070" -draw "rectangle 1290,910 1470,1060" -draw "rectangle 1490,900 1910,1070" -draw "rectangle 1500,910 1900,1015"\
- -fill $CFM -draw "text 1302,935 '$CH2'" -draw "text 1302,955 '$CH3'" -draw "text 1302,975 '$CH4'" -draw "text 1302,995 '$CH5'" -draw "text 1302,1015 '$CH6'" -draw "text 1302,1035 '$CH7'"\
+ -fill $CFM -draw "text 1300,935 '$CH2'" -draw "text 1300,955 '$CH3'" -draw "text 1300,975 '$CH4'" -draw "text 1300,995 '$CH5'" -draw "text 1300,1015 '$CH6'" -draw "text 1300,1035 '$CH7'"\
  -fill $CB -draw "text 1302,917 '$CA1'" -draw "text 1302,937 '$CA2'" -draw "text 1302,957 '$CA3'" -draw "text 1302,977 '$CA4'" -draw "text 1302,997 '$CA5'" -draw "text 1302,1017 '$CA6'" -draw "text 1302,1037 '$CA7'"\
  -fill $CFH -draw "text 1300,915 '$CA1'" -draw "text 1300,935 '$CA2'" -draw "text 1300,955 '$CA3'" -draw "text 1300,975 '$CA4'" -draw "text 1300,995 '$CA5'" -draw "text 1300,1015 '$CA6'" -draw "text 1300,1035 '$CA7'"\
  -font Digital-7-MonoItalic -pointsize 120\
