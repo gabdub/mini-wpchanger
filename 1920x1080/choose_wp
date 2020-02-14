@@ -3,6 +3,9 @@ BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 WPDIR=$BASEDIR/wallpapers
 FI=$BASEDIR/back.jpg
 FM=$BASEDIR/mode
+SAVEDFI=$BASEDIR/saved_back.jpg
+NONET=$BASEDIR/nonet/wallhaven-681107.png
+LOGNN=$BASEDIR/nonet/no_net.log
 
 function random_choose {
   WPR=$WPDIR/$(ls $WPDIR | shuf -n 1)
@@ -19,45 +22,59 @@ newmode=true
 while $newmode ; do
   newmode=false
   #mode 0 = fixed background
-  if [ $MODE = 1 ]; then
-    #mode 1 = change background every run
-    random_choose
-  elif [ $MODE = 2 ]; then
-    #mode 2 = change background every 5 minutes (since last change)
-    [ ! -f $FI ] && random_choose
-    [ $(find "$FI" -mmin +4) ] && random_choose
-  elif [ $MODE = 3 ]; then
-    #mode 3 = change background at ".0" and ".5" minutes
-    MIN=$(date +"%M")
-    MM="${MIN: -1}"
-    [ $MM -eq "0" ] && random_choose
-    [ $MM -eq "5" ] && random_choose
-  elif [ $MODE = 4 ]; then
-    #mode 4 = choose a background from a list
-    IDX=$BASEDIR/playindex
-    [ ! -f $IDX ] && echo 1 > $IDX
-    NUM=$(cat $IDX)
-    WPF=$(sed "${NUM}q;d" $BASEDIR/wp_playlist)
-    if [ $WPF = 4 ]; then
-      #same mode, reset position
-      NUM=1
-      WPF=$(sed "${NUM}q;d" $BASEDIR/wp_playlist)
-    fi
-    WPFLEN=${#WPF}
-    if [ $WPFLEN = 1 ]; then
-      #end of the list, set new mode
-      MODE=$WPF
-      echo $MODE > $FM
-      #reset index for next time
-      echo 1 > $IDX
-      rm $FI
-      #and loop
-      newmode=true
+  if [ $MODE != 0 ]; then
+    #NET TEST
+    nc -v -z -w 2 8.8.8.8 53 &> /dev/null
+    status=$( echo $? )
+    if [[ $status == 0 ]] ; then
+      #NET OK
+      [ -f $SAVEDFI ] && cp $SAVEDFI $FI && rm $SAVEDFI
+      if [ $MODE = 1 ]; then
+        #mode 1 = change background every run
+        random_choose
+      elif [ $MODE = 2 ]; then
+        #mode 2 = change background every 5 minutes (since last change)
+        [ ! -f $FI ] && random_choose
+        [ $(find "$FI" -mmin +4) ] && random_choose
+      elif [ $MODE = 3 ]; then
+        #mode 3 = change background at ".0" and ".5" minutes
+        MIN=$(date +"%M")
+        MM="${MIN: -1}"
+        [ $MM -eq "0" ] && random_choose
+        [ $MM -eq "5" ] && random_choose
+      elif [ $MODE = 4 ]; then
+        #mode 4 = choose a background from a list
+        IDX=$BASEDIR/playindex
+        [ ! -f $IDX ] && echo 1 > $IDX
+        NUM=$(cat $IDX)
+        WPF=$(sed "${NUM}q;d" $BASEDIR/wp_playlist)
+        if [ $WPF = 4 ]; then
+          #same mode, reset position
+          NUM=1
+          WPF=$(sed "${NUM}q;d" $BASEDIR/wp_playlist)
+        fi
+        WPFLEN=${#WPF}
+        if [ $WPFLEN = 1 ]; then
+          #end of the list, set new mode
+          MODE=$WPF
+          echo $MODE > $FM
+          #reset index for next time
+          echo 1 > $IDX
+          rm $FI
+          #and loop
+          newmode=true
+        else
+          cp $BASEDIR/$WPF $FI
+          #advance index
+          NUM=$((NUM+1))
+          echo $NUM > $IDX
+        fi
+      fi
     else
-      cp $BASEDIR/$WPF $FI
-      #advance index
-      NUM=$((NUM+1))
-      echo $NUM > $IDX
+      #NO NET
+      [ ! -f $SAVEDFI ] && cp $FI $SAVEDFI
+      cp $NONET $FI
+      date >> $LOGNN
     fi
   fi
 done
