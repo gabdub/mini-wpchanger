@@ -9,6 +9,12 @@ After using __variety__ wallpaper changer (http://peterlevi.com/variety/) for a 
 
 ![my desktop 2](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/desktop2.jpg "my desktop 2")
 
+
+
+![no Internet](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/no_net.jpg "no Internet")
+
+
+
 __Installation:__
 
 Just clone the repository somewhere, copy the files of your screen resolution, add some wallpapers to __wallpapers__ folder (adjust the files to your screen resolution) and run __choose_wp__ from cron every minute and at start up.
@@ -78,3 +84,8 @@ The time is stamped over a fixed image without using transparency or any fancy m
 Run __stamp_date__ at startup and from cron (instead of _choose_wp_).
 
 ![my netbook](https://github.com/gabdub/mini-wpchanger/blob/master/screencap/netbook1.jpg "my netbook")
+
+
+**no Internet detection**
+
+The script also checks that every minute Google DNS (8.8.8.8 port 53) is reachable. When it is not, the wallpaper is changed and the date/time logged.
